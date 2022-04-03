@@ -48,9 +48,9 @@ Great ! We have all we need ! We now know that this CPU supports advanced SIMD i
 
 ## 1. Flashing the card with an OS
 
-Ok so now let's talk about the OS that I've installed on the board. I won't go into to much details on that as it's pretty well documented on the web but I basicly followed [this tutorial](https://www.raspberrypi.com/documentation/computers/getting-started.html).
+Ok so now let's talk about the OS that I've installed on the board. I won't go into to much details on that as it's pretty well documented on the web but I basically followed [this tutorial](https://www.raspberrypi.com/documentation/computers/getting-started.html).
 
-I choosed to install Debian GNU/Linux 10 (buster). I don't know much about the criteria to choose an OS but it seemed that the Raspberry Pi OS is by default 32 bits (even on a 64 bits CPU) 🤔.
+I choosed to install Debian GNU/Linux 10 (buster). I don't know much about the criteria to choose an OS but it seemed that the Raspberry Pi OS is by default 32 bits (even on a 64 bits CPU) 🤔 so I went for the linux version.
 
 
 
@@ -103,7 +103,7 @@ sudo ufw status verbose (check the status of the firewall)
 
 ## 3. Raspberry Pi power supply
 
-Overything went well but I realized it happend that I couldn't connect to SSH. I was getting the following error:
+Overything went well but I realized it happened that I couldn't connect to SSH. I was getting the following error:
 
 ```
 ssh: connect to host XXX.XXX.X.XXX port 22: Operation timed out
