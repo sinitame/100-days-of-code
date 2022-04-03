@@ -7,7 +7,8 @@ If you want to learn more about Rust, Embedded Software and Machine Learning, yo
 
 Let's start ! 🚀
 
-| Day                  | Topic                | Description                                                |
-| -------------------- | -------------------- | ---------------------------------------------------------- |
-| [00](days/day-00.md) | Setting up the goals | Defining the challenge goals and the first week objectives |
+| Day                         | Topic                | Description                                                |
+| --------------------------- | -------------------- | ---------------------------------------------------------- |
+| [00](days/day-00.md)        | Setting up the goals | Defining the challenge goals and the first week objectives |
+| [01](days/day-01/README.md) | Raspberry Pi setup   | Setting my Raspberry Pi                                    |
 
