@@ -7,9 +7,10 @@ If you want to learn more about Rust, Embedded Software and Machine Learning, yo
 
 Let's start ! 🚀
 
-| Day                         | Topic                              | Description                                                |
-| --------------------------- | ---------------------------------- | ---------------------------------------------------------- |
-| [00](days/day-00.md)        | Setting up the goals               | Defining the challenge goals and the first week objectives |
-| [01](days/day-01/README.md) | Raspberry Pi setup                 | Setting my Raspberry Pi                                    |
-| [02](days/day-02)           | Cross compile for the Raspberry Pi | Setup cargo to cross compile from OSX to ARM               |
+| Day                         | Topic                                  | Description                                                |
+| --------------------------- | -------------------------------------- | ---------------------------------------------------------- |
+| [00](days/day-00.md)        | Setting up the goals                   | Defining the challenge goals and the first week objectives |
+| [01](days/day-01/README.md) | Raspberry Pi setup                     | Setting my Raspberry Pi                                    |
+| [02](days/day-02)           | Cross compile for the Raspberry Pi     | Setup cargo to cross compile from OSX to ARM               |
+| [03](days/day-03/README.md) | Cross compile for the Raspberry Pi - 1 | Fix the bug I had yesterday                                |
 
