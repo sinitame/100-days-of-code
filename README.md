@@ -13,4 +13,5 @@ Let's start ! 🚀
 | [01](days/day-01/README.md) | Raspberry Pi setup                     | Setting my Raspberry Pi                                    |
 | [02](days/day-02)           | Cross compile for the Raspberry Pi     | Setup cargo to cross compile from OSX to ARM               |
 | [03](days/day-03/README.md) | Cross compile for the Raspberry Pi - 1 | Fix the bug I had yesterday                                |
+| [04](days/day-04/README.md) | Cross compile for the Raspberry Py - 2 | How to use cargo `dinghy`                                  |
 

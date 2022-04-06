@@ -1,0 +1,6 @@
+[platforms.raspi-ubuntu]
+rustc_triple="aarch64-unknown-linux-musl"
+toolchain="/Users/sinitame/Downloads/aarch64-unknown-linux-gnu"
+
+[ssh_devices]
+raspi = { hostname = "raspi", username="pi", platform="raspi-ubuntu" }
