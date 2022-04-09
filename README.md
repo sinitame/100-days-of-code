@@ -15,4 +15,6 @@ Let's start ! 🚀
 | [03](days/day-03/README.md) | Cross compile for the Raspberry Pi - 1 | Fix the bug I had yesterday                                |
 | [04](days/day-04/README.md) | Cross compile for the Raspberry Pi - 2 | How to use cargo `dinghy`                                  |
 | [05](days/day-05/README.md) | Arduino 33 BLE setup                   | Reading the spec of the board                              |
+| [06](days/day-06/README.md) | Nothing today 🥲                        | Didn't have time to work on the challenge                  |
+| [07](days/day-07/README.md) | Arduino 33 BLE setup - 1               | Run Rust code on the board                                 |
 
