@@ -65,11 +65,84 @@ Uploading using selected port: /dev/cu.usbmodem1441301
 
 
 
+#### That's a lot of lines but few of them are very informative
+
+**Linker file preparation**
+
+```
+/.../bin/arm-none-eabi-g++ -E -P -x c /.../ARDUINO_NANO33BLE/linker_script.ld -o /.../linker_script.ld
+```
+
+Here is what the different options mean:
+
+- **E**: Stop after the preprocessing stage; do not run the compiler proper. The output is in the form of preprocessed source code, which is sent to the standard output. Input files which don't require preprocessing are ignored.
+- **P**: I didn't find this one 🤷🏻‍♂️
+- **x**: Specify explicitly the language for the following input files (so here it's `c`)
+- **o**: Output file name
+
+I don't really understant the logic behind this command but from what I understant it just copies the linker script to the relevant project build directory.
+
+What's inside is also very verbose, but it basically maps the symbols (which are relative addresses) from the objects files during linking to actual memory addresses on the device memory. The important thing here is this first block. I tells us the address of the RAM and the RAM
+
+```
+ MEMORY
+{
+   FLASH (rx) : ORIGIN = 0x10000, LENGTH = 0xf0000
+   RAM_NVIC (rwx) : ORIGIN = 0x20000000, LENGTH = 0x100
+   RAM_CRASH_DATA (rwx) : ORIGIN = (0x20000000 + 0x100), LENGTH = 0x100
+   RAM (rwx) : ORIGIN = ((0x20000000 + 0x100) + 0x100), LENGTH = (0x40000 - (0x100 + 0x100))
+}
+```
 
 
-## Understand the flashing process
+
+**Source compilation**
+
+```
+/.../arm-none-eabi-g++ 
+	-L/.../T/arduino_build_882018 -Wl
+	--gc-sections -Wall -Wextra -Wl
+	--as-need  @/.../ARDUINO_NANO33BLE/ldflags.txt -T/.../linker_script.ld -Wl
+	-Map /.../Blink.ino.map
+	--specs=nosys.specs 
+	-o /.../Blink.ino.elf 
+	/.../sketch/Blink.ino.cpp.o
+	/.../variant.cpp.o -Wl
+	--whole-archive /.../core_arduino_mbed_nano_nano33ble_a8211ef55d5cb723d9b59e4bc7c22fcb.a /.../libs/libmbed.a /.../libs/libcc_310_core.a /.../libs/libcc_310_ext.a /.../libs/libcc_310_trng.a -Wl
+	--no-whole-archive -Wl
+	--start-group -lstdc++ -lsupc++ -lm -lc -lgcc -lnosys -Wl
+	--end-group
+```
+
+I won't go into too much details here but we basically use the compiled object file `Blink.ino.cpp.o` (which is the one containing our project code) and all the libraries and objects files that we need to build the final binary into `Blink.ino.elf`.
+
+**Binary file generation**
+
+```
+/.../arm-none-eabi-objcopy -O binary /.../Blink.ino.elf /.../Blink.ino.bin
+```
+
+`objcopy` can be used to generate a raw binary file by using an output target of ‘binary’ (e.g., use -O binary). When `objcopy` generates a raw binary file, it will essentially produce a memory dump of the contents of the input object file. All symbols and relocation information will be discarded. The memory dump will start at the load address of the lowest section copied into the output file.
+
+**Convert binary to intel hex format**
+
+```
+/.../arm-none-eabi-objcopy -O ihex -R .eeprom /.../Blink.ino.elf /.../Blink.ino.hex
+```
+
+**Get the size of the binary**
+
+```
+/.../arm-none-eabi-size -A /.../Blink.ino.elf
+```
+
+**Flash the board with it**
+
+```
+/.../bossac -d --port=cu.usbmodem1441301 -U -i -e -w /.../Blink.ino.bin -R 
+```
 
 
 
-## Compile and run Rust on the board
+I have managed to flash some Rust code on the board but it took me some time to figure out how to do it. I decided to look a bit deeper on how a flashing process works before going into the details of how to run Rust code on the board. I'll try to cover that tomorrow
 
