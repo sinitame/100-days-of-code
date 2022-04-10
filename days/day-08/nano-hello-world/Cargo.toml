@@ -1,0 +1,13 @@
+[package]
+name = "nano-hello-world"
+version = "0.1.0"
+authors = ["sinitame"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+cortex-m = "0.6.2"
+cortex-m-rt = "0.6.12"
+nrf52840-hal = { version = "*", features = ["rt"]}
+panic-halt = "~0.2"
